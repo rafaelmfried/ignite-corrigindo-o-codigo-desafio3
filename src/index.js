@@ -42,10 +42,9 @@ app.post("/repositories", (request, response) => {
 });
 
 app.put("/repositories/:id",validateRepositoryIndex ,(request, response) => {
-  const updatedRepository = request.body;
   const { repositoryIndex } = request;
-
-  const repository = { ...repositories[repositoryIndex], ...updatedRepository };
+  const { title, url, techs } = request.body;
+  const repository = { ...repositories[repositoryIndex], title, url, techs };
 
   repositories[repositoryIndex] = repository;
 
